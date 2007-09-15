@@ -4,7 +4,7 @@
 
 Name:           redline
 Version:        1.0.10
-Release:        %mkrel 0.0.1
+Release:        %mkrel 0.0.2
 Epoch:          0
 Summary:        Pure Java library for manipulating RPM Package Manager packages
 License:        MIT
@@ -24,8 +24,6 @@ BuildRequires:  junit
 BuildRequires:  util-text
 BuildRequires:  util-xml-editor
 %if %{gcj_support}
-Requires(post): java-gcj-compat
-Requires(postun): java-gcj-compat
 BuildRequires:  java-gcj-compat-devel
 %else
 BuildRequires:  java-devel
