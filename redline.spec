@@ -3,14 +3,14 @@
 %bcond_without          bootstrap
 
 Name:           redline
-Version:        1.0.10
-Release:        %mkrel 0.0.3
+Version:        1.1.0
+Release:        %mkrel 0.0.1
 Epoch:          0
 Summary:        Pure Java library for manipulating RPM Package Manager packages
 License:        MIT
 Group:          Development/Java
 URL:            http://www.freecompany.org/
-Source0:        http://repository.freecompany.org/org/freecompany/redline/zips/redline-src-1.0.10.zip
+Source0:        http://repository.freecompany.org/org/freecompany/redline/zips/redline-src-%{version}.zip
 Source1:        redline-1.0.10-build.xml
 Requires:       util-text
 Requires:       util-xml-editor
@@ -66,15 +66,13 @@ export OPT_JAR_LIST="ant/ant-junit ant/ant-nodeps"
 
 %{__mkdir_p} %{buildroot}%{_javadir}
 %{__cp} -a dist/%{name}.jar %{buildroot}%{_javadir}/%{name}-%{version}.jar
-(cd %{buildroot}%{_javadir} && for jar in *-%{version}*; do %{__ln_s} ${jar} ${jar/-%{version}/}; done)
+%create_jar_links
 
 %{__mkdir_p} %{buildroot}%{_javadocdir}/%{name}-%{version}
 %{__cp} -a dist/doc/* %{buildroot}%{_javadocdir}/%{name}-%{version}
 %{__ln_s} %{name}-%{version} %{buildroot}%{_javadocdir}/%{name}
 
-%if %{gcj_support}
-%{_bindir}/aot-compile-rpm
-%endif
+%{gcj_compile}
 
 %clean
 %{__rm} -rf %{buildroot}
