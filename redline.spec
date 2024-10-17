@@ -9,7 +9,7 @@ Epoch:          0
 Summary:        Pure Java library for manipulating RPM Package Manager packages
 License:        MIT
 Group:          Development/Java
-URL:            http://www.freecompany.org/
+URL:            https://www.freecompany.org/
 Source0:        http://repository.freecompany.org/org/freecompany/redline/zips/redline-src-%{version}.zip
 Source1:        redline-1.0.10-build.xml
 Requires:       util-text
